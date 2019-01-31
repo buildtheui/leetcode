@@ -25,3 +25,21 @@ var isPalindromeFaster = function(x) {
     }
     return reverse === defaultValue;
 };
+
+/**
+ * Runtime: 344 ms
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindromeSlower = function(x) {
+    if (x < 0) return false; 
+    var defaultValue = x, reverse = 0, pop;
+    var numLength = x.toString().length;
+    iterLimit = ((numLength & 1) === 0) ? numLength / 2: (numLength + 1) / 2 ;
+    for (var i = 0; i< iterLimit; i++) {
+        pop = x % 10;
+        x = (x / 10) | 0;
+        reverse = reverse * 10 + pop;    
+    }
+    return ((numLength & 1) === 0) ? x === reverse : (x === ((reverse / 10) | 0)) ;
+};
