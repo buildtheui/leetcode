@@ -34,7 +34,7 @@ var romanToInt = function(s) {
  * @param {string} s
  * @return {number}
  */
-var romanToIntFaster = function(s) {
+var romanToIntLittleFaster = function(s) {
     var intTotal = 0, letter = '';
     var dictNums = {
            'CM': 900,
@@ -62,5 +62,34 @@ var romanToIntFaster = function(s) {
         }
         intTotal += dictNums[letter]; 
     }
+    return intTotal;
+};
+
+/**
+ * Runtime: 196 ms
+ * @param {string} s
+ * @return {number}
+ */
+var romanToIntfaster = function(s) {
+    var intTotal = 0, inc = 0;
+    var dictNums = {
+           'M': 1000,
+           'D': 500,
+           'C': 100,
+           'L': 50,
+           'X': 10,
+           'V': 5,
+           'I': 1
+       };
+    
+    while(s.length !== inc) {     
+        if( dictNums[s[inc]] < dictNums[s[inc + 1]]) {
+           intTotal -= dictNums[s[inc]];
+            
+        } else {
+           intTotal += dictNums[s[inc]];
+        }
+        ++inc;
+    }  
     return intTotal;
 };
