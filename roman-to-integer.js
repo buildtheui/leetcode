@@ -84,8 +84,7 @@ var romanToIntfaster = function(s) {
     
     while(s.length !== inc) {     
         if( dictNums[s[inc]] < dictNums[s[inc + 1]]) {
-           intTotal -= dictNums[s[inc]];
-            
+           intTotal -= dictNums[s[inc]];            
         } else {
            intTotal += dictNums[s[inc]];
         }
